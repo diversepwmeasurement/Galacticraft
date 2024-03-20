@@ -1,31 +1,24 @@
-on:
-  issues:
-    types: [opened]
 jobs:
   build:
     name: Issues Responder
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
-      - name: 'comment-close'
-        uses: peter-evans/close-issue@v2
-        with:
-          comment: >
-            <h1 align="center">
-            <a>Repository Unarchived for Capes List Updates Only</a>
-            </h1>
-            <h3 align="center">
-            Use the<a href="https://github.com/TeamGalacticraft/Galacticraft-Legacy/issues"> Galacticraft-Legacy </a>repository for new Issues
-            </h3>
-            <p> 
-            <div align="center">
-            <tt>⚠
-            <strong>PLEASE NOTE THE FOLLOWING REGARDING THE GALACTICRAFT-LEGACY REPO AND 1.12.2 UPDATES</strong>
-            ⚠</tt>
-            </div>
-            <h3>1.12.2 Issues/Bugs Only</h3>
-            <blockquote><em>
-            <a href="https://github.com/TeamGalacticraft/Galacticraft-Legacy">Galacticraft-Legacy</a> is for 1.12.2 updates and issues only. Issues submitted using older versions will be closed
-            </em></blockquote>
-            <h3>Still Using Galacticraft v4.0.2.280 or Lower?</h3>
-            <blockquote><em>
-            Make sure you update to the latest available version. Available on <a href="https://www.curseforge.com/minecraft/mc-mods/galacticraft-legacy">CurseForge</a> & <a href="https://modrinth.com/mod/galacticraft-legacy">Modrinth</a></em></blockquote>
+    - continue-on-error: true
+      name: comment-close
+      uses: peter-evans/close-issue@v2
+      with:
+        comment: "<h1 align=\"center\"> <a>Repository Unarchived for Capes List Updates\
+          \ Only</a> </h1> <h3 align=\"center\"> Use the<a href=\"https://github.com/TeamGalacticraft/Galacticraft-Legacy/issues\"\
+          > Galacticraft-Legacy </a>repository for new Issues </h3> <p>  <div align=\"\
+          center\"> <tt>\u26A0 <strong>PLEASE NOTE THE FOLLOWING REGARDING THE GALACTICRAFT-LEGACY\
+          \ REPO AND 1.12.2 UPDATES</strong> \u26A0</tt> </div> <h3>1.12.2 Issues/Bugs\
+          \ Only</h3> <blockquote><em> <a href=\"https://github.com/TeamGalacticraft/Galacticraft-Legacy\"\
+          >Galacticraft-Legacy</a> is for 1.12.2 updates and issues only. Issues submitted\
+          \ using older versions will be closed </em></blockquote> <h3>Still Using\
+          \ Galacticraft v4.0.2.280 or Lower?</h3> <blockquote><em> Make sure you\
+          \ update to the latest available version. Available on <a href=\"https://www.curseforge.com/minecraft/mc-mods/galacticraft-legacy\"\
+          >CurseForge</a> & <a href=\"https://modrinth.com/mod/galacticraft-legacy\"\
+          >Modrinth</a></em></blockquote>\n"
+on:
+  repository_dispatch:
+    types: trigger-ga___responder.yml
